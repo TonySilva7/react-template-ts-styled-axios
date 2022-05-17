@@ -1,16 +1,23 @@
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import {
+	ActionReducerMapBuilder,
+	createAsyncThunk,
+	createSlice,
+	PayloadAction,
+} from '@reduxjs/toolkit';
 import { RootState } from '../../app/store';
 import { productService } from '../../services/myExampleService';
 
 export interface IMyState {
 	num: number;
-	user: {
-		id: number;
-		name: string;
-		url: string;
-	};
+	user: UserProps;
 	status: 'idle' | 'pending' | 'succeeded' | 'failed';
 }
+
+export type UserProps = {
+	id: number;
+	name: string;
+	url: string;
+};
 
 const initialState: IMyState = {
 	num: 0,
@@ -18,7 +25,7 @@ const initialState: IMyState = {
 	status: 'idle',
 };
 
-// Faz requisição para API
+// Thunk Function
 export const getMyData = createAsyncThunk('games', async (url: string) => {
 	const response = await productService.fetchMyData(url);
 	return response.data;
@@ -37,8 +44,8 @@ export const mySlice = createSlice({
 		},
 	},
 
-	extraReducers: (builder) => {
-		builder.addCase(getMyData.fulfilled, (state, action: PayloadAction<any, any>) => {
+	extraReducers: (builder: ActionReducerMapBuilder<IMyState>) => {
+		builder.addCase(getMyData.fulfilled, (state, action: PayloadAction<any, string>) => {
 			// state.user = action.payload.data.login;
 			state.user = action.payload;
 			state.status = 'succeeded';
