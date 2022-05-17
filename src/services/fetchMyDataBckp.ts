@@ -1,4 +1,4 @@
-export const fetchMyDataKkk = async (url: string) => {
+export const fetchMyDataTest = async (url: string) => {
 	console.log(url);
 
 	// const response = await api

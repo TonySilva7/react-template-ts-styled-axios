@@ -7,7 +7,7 @@ interface MyRouteProps {
 }
 
 export default function MyRoutes({ component: Component, ...rest }: MyRouteProps) {
-	const isLoggedIn = false;
+	const isLoggedIn = true;
 	return (
 		<Route
 			{...rest}

@@ -7,6 +7,8 @@ import {
 	selectMyNum,
 } from '../../features/myReducer/mySlice';
 
+import { Button } from 'antd';
+
 const Dashboard = () => {
 	const dispatch = useAppDispatch();
 	const myNum = useAppSelector(selectMyNum);
@@ -16,13 +18,9 @@ const Dashboard = () => {
 			<div style={{ marginLeft: '2rem' }}>
 				<h1>Hello World!</h1>
 				<span style={{ display: 'flex' }}>
-					<button style={{ padding: '1rem' }} onClick={() => dispatch(handleDecrement())}>
-						-
-					</button>
+					<Button type="primary" onClick={() => dispatch(handleDecrement())}> - </Button>
 					<h1>{myNum}</h1>
-					<button style={{ padding: '1rem' }} onClick={() => dispatch(handleIncrement())}>
-						+
-					</button>
+					<Button type="primary" onClick={() => dispatch(handleIncrement())}> + </Button>
 				</span>
 			</div>
 		</>
