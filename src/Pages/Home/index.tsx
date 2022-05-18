@@ -1,4 +1,3 @@
-import { UserOutlined } from '@ant-design/icons';
 import { Affix, Avatar, Layout, List, PageHeader, Spin } from 'antd';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
@@ -49,7 +48,7 @@ const Home = () => {
 								renderItem={item => (
 									<List.Item>
 										<List.Item.Meta
-											avatar={<Avatar icon={<UserOutlined />} />}
+											avatar={<Avatar src={item.avatar_url} size={50}/>}
 											title={<a href="https://ant.design">{item.name}</a>}
 											description={item.url}
 										/>

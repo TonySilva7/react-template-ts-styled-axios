@@ -1,5 +1,6 @@
 import { Avatar, Badge, Button, Modal } from 'antd';
 import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import Header from '../../components/Header';
 import {
@@ -12,6 +13,7 @@ import {
 const Dashboard = () => {
 	const dispatch = useAppDispatch();
 	const myNum = useAppSelector(selectMyNum);
+	const history = useHistory();
 
 
 	const [isModalVisible, setIsModalVisible] = useState(false);
@@ -26,6 +28,7 @@ const Dashboard = () => {
 
   const handleCancel = () => {
     setIsModalVisible(false);
+		history.push('/');
   };
 
 	useEffect(() => {

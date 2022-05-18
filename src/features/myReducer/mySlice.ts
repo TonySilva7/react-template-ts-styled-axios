@@ -17,11 +17,12 @@ export type UserProps = {
 	id: number;
 	name: string;
 	url: string;
+	avatar_url: string;
 };
 
 const initialState: IMyState = {
 	num: 0,
-	user: { id: 0, name: '', url: '' },
+	user: { id: 0, name: '', url: '', avatar_url: '' },
 	status: 'idle',
 };
 
@@ -48,6 +49,7 @@ export const mySlice = createSlice({
 		builder.addCase(getMyData.fulfilled, (state, action: PayloadAction<any, string>) => {
 			// state.user = action.payload.data.login;
 			state.user = action.payload;
+			console.log(state.user);
 			state.status = 'succeeded';
 		});
 
