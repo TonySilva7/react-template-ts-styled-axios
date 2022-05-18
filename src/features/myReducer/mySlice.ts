@@ -2,7 +2,7 @@ import {
 	ActionReducerMapBuilder,
 	createAsyncThunk,
 	createSlice,
-	PayloadAction,
+	PayloadAction
 } from '@reduxjs/toolkit';
 import { RootState } from '../../app/store';
 import { productService } from '../../services/myExampleService';

@@ -14,7 +14,7 @@ test('Header renders correctly', () => {
 	const headingHome = screen.getByRole('heading', { name: 'Header' }).parentElement;
 	expect(headingHome).toBeInTheDocument();
 	expect(headingHome).toHaveStyle({
-		backgroundColor: theme.colors.primary,
+		backgroundColor: theme.colors.info,
 	});
 
 	// const { container } = renderTheme(<Header />);

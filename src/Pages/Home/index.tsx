@@ -1,7 +1,13 @@
+import { UserOutlined } from '@ant-design/icons';
+import { Affix, Avatar, Layout, List, PageHeader, Spin } from 'antd';
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { getMyData, selectStatus, selectUser } from '../../features/myReducer/mySlice';
+import { theme } from '../../styles/theme';
+
+const { Header, Footer, Content } = Layout;
 
 const Home = () => {
 	const dispatch = useAppDispatch();
@@ -20,16 +26,78 @@ const Home = () => {
 
 	return (
 		<div>
-			<h1>Home</h1>
-			{status === 'pending' ? (
-				<p>Loading...</p>
-			) : (
-				<div>
-					<p>ID: {user.id}</p>
-					<p>Nome: {user.name}</p>
-					<p>URL: {user.url}</p>
-				</div>
-			)}
+
+
+		<Layout>
+      <Header style={{backgroundColor: theme.colors.info, marginBottom: '5rem'}}>
+				<PageHeader
+					// onBack={() => null}
+					title="Home"
+					subTitle="Seja Bem Vindo"
+					style={{padding: theme.spacing.none}}
+				/>
+			</Header>
+
+     
+        <Content style={{padding: theme.spacing.regular, minHeight: 'calc(100vh - 18rem)'}}>
+					{status === 'pending' ? (
+						<Spin />
+					) : (
+						<List
+								itemLayout="horizontal"
+								dataSource={[user]}
+								renderItem={item => (
+									<List.Item>
+										<List.Item.Meta
+											avatar={<Avatar icon={<UserOutlined />} />}
+											title={<a href="https://ant.design">{item.name}</a>}
+											description={item.url}
+										/>
+									</List.Item>
+								)}
+							/>
+					)}
+
+					<Affix style={{marginTop: '4rem'}}>
+						<Link to='/dashboard'>
+										Testar Redux 😎️? 
+						</Link>
+					</Affix>
+					
+				</Content>
+      
+
+      <Footer style={{position: 'absolute', bottom: '0px', width: '100vw', backgroundColor: '#eaeaec'}}>By @Tony</Footer>
+    </Layout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 		</div>
 	);
 };
