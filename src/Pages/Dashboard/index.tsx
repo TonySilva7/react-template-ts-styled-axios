@@ -51,9 +51,11 @@ const Dashboard = () => {
 				<h3>Teste o Redux nos botões abaixo!</h3>
 				<span style={{ display: 'flex' }}>
 					<Button type="primary" danger onClick={() => dispatch(handleDecrement())} style={{margin: '2rem'}}> - </Button>
-						<Badge count={myNum}>
-      				<Avatar shape="circle" size="large" />
-    				</Badge>
+
+					<Badge count={myNum}>
+						<Avatar shape="circle" size="large" />
+					</Badge>
+					
 					<Button type="primary" onClick={() => dispatch(handleIncrement())} style={{margin: '2rem'}}> + </Button>
 				</span>
 
